@@ -17,12 +17,15 @@
 
     <title>Weather Dashboard</title>
   </head>
- <div class="container">
+ <div class="container-fluid">
+  <header>
+    <h1 class="fw-bolder">Weather Dashboard</h1>
+</header>
+<!-- city search area -->
   <div class="row">
-    <div class="col-sm-4">
-      <label for='city-search'><h2>Find City Weather</h2></label>
-      <div class="'input-group mb-3">
-        <input type="search" class="city-search" placeholder="city search" id="city-search">
+    <div class="col-2" id="search-field">
+      <h2>City Weather Search:</h2>
+        <input type="search" class="city-search" placeholder="city search" id="city-search"/>
         <div class="city-search-history">
           <button class="button" id="search-button" type="button-text">Search</button>
         </div>
@@ -34,17 +37,15 @@
       <div class="past">
       </div>
     </div>
-    <div class="col-md-8">
-      <div class="d-flex flex-column">
-        <div class="p-2" id="current-weather">
-          <h1>Current Weather</h1>
-        </div>
-        <div class="p-2">
-          <h2>Five Day Forecast</h2>
-        </div>
-        <div id="five-day" class="row"></div>
-      </div>
-    </div>
+
+<!-- weather display area -->
+
+<div class ="col-10">
+  <div class="row" id="currentForecast"></div>
+  <div class="row" id="fiveDayForecast">
+    <h2>Five Day Forecast</h2>
+  </div>
+</div>
   </div>
  </div>
 
