@@ -20,25 +20,66 @@
       <h2>Search</h2>
       <form>
         <div>
-          <input type="text" class="form-control mb-2" id="city-cearch" placeholder="City Search">
+          <input type="text" class="form-control-lg" id="city-cearch" placeholder="City Search">
           <button type="button" class="btn btn-primary" id="search" value="search">Search</button>
         </div>
       </form>
    </div>
+  </div>
    <div class="row">
     <div class="col border-top pt-2" id="pastSearches">
     </div>
    </div>
    </div>
-   </div>
+  <div class="col-9">
    <div class="row">
-    <div class="col" id="currentForecast"></div>
+    <div class="col m-2" id="currentForecast">
+    <div class="row">
+      <div class="col card">
+        <p id="today">Today</p>
+        <i><img id="current-icon0" src="" alt="weatherIcon"></i>
+        <p id="temp"></p>
+        <p id="wind"></p>
+     <p id="humidity"></p>   </div>
+   </div>
    </div>
    <div class="row justify-content-center" id="weather">
-    <div class="row">
-      <div class="col"></div>
-    </div>
-    
+      <div class="col">
+        <div class="col card">
+          <p id="tomorrow">Tomorrow</p>
+          <i><img id="current-icon1" src="" alt="weatherIcon"></i>
+          <p id="tempNext"></p>
+          <p id="windNext"></p>
+       <p id="humidityNext"></p>   </div>
+       <div class="col card">
+        <p id="day2">Day 2</p>
+        <i><img id="current-icon2" src="" alt="weatherIcon"></i>
+        <p id="tempNext"></p>
+        <p id="windNext"></p>
+     <p id="humidityNext"></p>   </div>
+     <div class="col card">
+      <p id="day3">Day 3</p>
+      <i><img id="current-icon3" src="" alt="weatherIcon"></i>
+      <p id="tempNext"></p>
+      <p id="windNext"></p>
+   <p id="humidityNext"></p>   </div>
+   <div class="col card">
+    <p id="day4">Day 4</p>
+    <i><img id="current-icon4" src="" alt="weatherIcon"></i>
+    <p id="tempNext"></p>
+    <p id="windNext"></p>
+ <p id="humidityNext"></p>/p>   </div>
+ <div class="col card">
+  <p id="day5">Day 5</p>
+  <i><img id="current-icon5" src="" alt="weatherIcon"></i>
+  <p id="tempNext"></p>
+  <p id="windNext"></p>
+<p id="humidityNext"></p>   </div>
+        
+      </div>
+ 
+  </div>
+
    </div>
    </div>
   <script src="./assets/script.js"></script>
@@ -140,23 +181,10 @@
 
 // <!-- weather display area -->
 // <!-- <div class="col-9">
-//   <div class= "row-card">
-//   <h4 id="current-Weather">Current Weather</h4>
-//   <i><img id="current-icon" src="" alt="Weather Icon"></i>
-//   <p id="temp"></p>
-//   <p id="wind"></p>
-//   <p id="humidity"></p>
-// </div>
+
 
 // <h3 class="row"> 5-Day Forecast</h3>
-//   <div class="row">
-//   <div class="col card">
-//     <p id="Day1">Day 1</p>
-//     <i><img id="current-icon1" src="" alt="Weather Icon"></i>
-//     <p id="temp"></p>
-//     <p id="wind"></p>
-//     <p id="humidity"></p>
-//   </div>
+//
 
 
 //   <div class="col card">
