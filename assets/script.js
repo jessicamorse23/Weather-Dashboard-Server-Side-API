@@ -26,6 +26,7 @@ function getWeather() {
   // let lon;
   console.log(apiCity);
   getWeatherNow(apiCity);
+}
 
   // currentWeather.textContent = '';
   // currentIcon.textContent = '';
@@ -53,48 +54,67 @@ function getWeatherNow(apiCity) {
   });
 }
 
+function forecast(lat, lon) {
+  let currentForecastApi = 
+  'https://api.openweathermap.org/data/2.5/forecast?lat=' +
+    lat +
+   '&lon=' +
+    lon +
+'&units=imperial&appid=' +
+apiKey;
 
+fiveDayForecast(currentForecastApi);
+}
 
+function fiveDayForecast(currentForecastApi) {
+  fetch(currentForecastApi)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data){
+    console.log(data)
+    let x=0;
+    for (let i =3; i < 36; i += 8) {
+      let time = data.list[i].dt_txt.split(" ");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//   fetch(apiCity)
-//     .then((response) => response.json())
-//     .then(function (data) {
-//       lat = data.coord.lat;
-//       long = data.coord.lon;
-//       let currentWeatherApi =
-//         'https://api.openweathermap.org/data/2.5/forecast?lat=' +
-//         lat +
-//         '&lon=' +
-//         lon +
-//         '&units=imperial&appid=' +
-//         apiKey;
-
-//   fetch(currentWeatherApi)
-//     .then((responseApiCity) => responseApiCity.json())
-//     .then(function (cityData) {
-//       console.log(cityData);
-//       postData(data, cityData);
-//       return cityData;
-//     });
-//   });
-// }
-
+      document.querySelector(`#day${x}`).children[0].textContent =
+      time[0];
+      document.querySelector(
+        `#day-${x}`
+      ).children[1].textContent = `Temp: ${Math.trunc(
+        data.list[i].main.temp
+      )} ${String.fromCharCode(176)} °F`;
+      document.querySelector(
+        `day-${x}`
+      ).children[2].textContent = `Wind: ${data.list[i].wind.speed} MPH`;
+      document.querySelector(
+        `day-${x}`
+      ).children[3].textContent = `Humidity: ${data.list[i].main.humidity} %`;
+      x++; 
+    }
+  });
+}
 citySearchForm.on("submit", function (e) {
   e.preventDefault();
   getWeatherNow();
   textBoxCity.val("");
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
