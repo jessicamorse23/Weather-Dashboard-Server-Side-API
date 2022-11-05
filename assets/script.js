@@ -29,6 +29,36 @@ citySearchButton.on("click", function (event) {
   renderLocalStorage();
 })
 
+var apiCity = function (apiSearch) {
+  // fetch weather
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${apiSearch}&appid=${apikey}`)
+  .then(function (response) {
+    if (response.ok) {
+      response.json()
+      .then(function (locationWeatherData) {
+        displayWeather(locationWeatherData);
+      })
+    }
+  })
+  // 5 day
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${apiSearch}&appid=${apikey}`)
+  .then(function (response) {
+    if (response.ok) {
+      response.json()
+      .then(function (locationWeatherData) {
+        displayWeather(locationWeatherData);
+      })
+    }
+  })
+}
+
+// display current weather
+var displayWeather = function (locationSearchData) {
+ 
+
+
+}
+
 
 // function getWeather() {
 //   // storeWeather();
