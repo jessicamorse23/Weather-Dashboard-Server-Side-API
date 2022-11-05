@@ -12,17 +12,38 @@
   <title>Weather Dashboard</title>
 </head>
 <body>
- <h1>Weather Dashboard</h1>
- <div class="container m-3 p-3">
-  <div class="row"> 
-       <div class="col-3"> 
-     <div class="col-3" id="search-field">
-      <h2>Search</h2>
-      <form>
-        <div>
-          <input type="text" class="form-control-lg" id="city-cearch" placeholder="City Search">
-          <button type="button" class="btn btn-primary" id="search" value="search">Search</button>
-        </div>
+<header>
+  <h1>Weather Dashboard</h1>
+</header>
+
+<div class="d-flex">
+  <div class="col-3">
+    <h4>Enter a City</h4>
+    <form id="form" class="mb-2">
+    <input id="city-search" class="form-input w-100" type="text" placeholder="city search field">
+    <button class="btn btn-info btn-block" id="search" style="margin: 15px">Search</button>
+    <hr>
+    </form>
+  </div>
+  <div>
+  <ul class="local-storage" id="searched-cities">
+  </ul>
+</div>
+</div>
+
+<div>
+  <div class="col-12" id="currentForecast">
+  </div>
+</div>
+<div class="row d-flex flex-row" id="extended-forecast">
+
+</div>
+
+
+ 
+          <!-- <input class="btn btn-primary" type="submit" value="Submit"></button> -->
+          <!-- <button type="button" class="btn btn-primary" id="search" value="search">Search</button> -->
+        <!-- </div>
       </form>
    </div>
   </div>
@@ -36,41 +57,42 @@
     <div class="col m-2" id="currentForecast">
     <div class="row">
       <div class="col card">
+        <h2 class="location">Current Weather in Your Location</h2>
         <p id="today">Today</p>
         <i><img id="current-icon0" src="" alt="weatherIcon"></i>
         <p id="temp"></p>
-        <p id="wind"></p>
-     <p id="humidity"></p>   </div>
+        <p id="wind"></p> -->
+     <!-- <p id="humidity"></p>   </div>
    </div>
    </div>
    <div class="row justify-content-center" id="weather">
       <div class="col">
         <div class="col card">
-          <p id="tomorrow">Tomorrow</p>
+          <p id="day-1">Tomorrow</p>
           <i><img id="current-icon1" src="" alt="weatherIcon"></i>
           <p id="tempNext"></p>
           <p id="windNext"></p>
        <p id="humidityNext"></p>   </div>
        <div class="col card">
-        <p id="day2">Day 2</p>
+        <p id="day-2">Day 2</p>
         <i><img id="current-icon2" src="" alt="weatherIcon"></i>
         <p id="tempNext"></p>
         <p id="windNext"></p>
      <p id="humidityNext"></p>   </div>
      <div class="col card">
-      <p id="day3">Day 3</p>
+      <p id="day-3">Day 3</p>
       <i><img id="current-icon3" src="" alt="weatherIcon"></i>
       <p id="tempNext"></p>
-      <p id="windNext"></p>
-   <p id="humidityNext"></p>   </div>
+      <p id="windNext"></p> -->
+   <!-- <p id="humidityNext"></p>   </div>
    <div class="col card">
-    <p id="day4">Day 4</p>
+    <p id="day-4">Day 4</p>
     <i><img id="current-icon4" src="" alt="weatherIcon"></i>
     <p id="tempNext"></p>
     <p id="windNext"></p>
  <p id="humidityNext"></p>/p>   </div>
  <div class="col card">
-  <p id="day5">Day 5</p>
+  <p id="day-5">Day 5</p>
   <i><img id="current-icon5" src="" alt="weatherIcon"></i>
   <p id="tempNext"></p>
   <p id="windNext"></p>
@@ -81,7 +103,7 @@
   </div>
 
    </div>
-   </div>
+   </div> -->
   <script src="./assets/script.js"></script>
 </body>
 </html>

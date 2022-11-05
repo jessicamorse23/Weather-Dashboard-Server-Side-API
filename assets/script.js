@@ -1,12 +1,12 @@
 var apiKey = 'ab8d7152432db2327ddc6c74cb809530';
-let textBoxCity = $("city-search")
+let textBoxCity = $("#city-search")
 let citySearchForm = $('#form')
-let cityLocation = $('location');
-let temp = $('#temp');
-let humidity = $('#humidity');
-let wind = $('#wind');
+// let cityLocation = $('.location');
+// let temp = $('#temp');
+// let humidity = $('#humidity');
+// let wind = $('#wind');
 let currentWeather = $('#currentForecast');
-let currentIcon = $('#current-icon0');
+// let currentIcon = $('#current-icon0');
 // let searchedCities = JSON.parse(localStorage.getItem('city'));
 var citySearchButton = $('#search');
 
@@ -16,7 +16,7 @@ var citySearchButton = $('#search');
 function getWeather() {
   // storeWeather();
   // console.log('hello');
-  let city = citySearchForm.val()
+  let city =  textBoxCity.val();
   let apiCity =
     'https://api.openweathermap.org/data/2.5/weather?q=' +
     city +
@@ -27,12 +27,6 @@ function getWeather() {
   console.log(apiCity);
   getWeatherNow(apiCity);
 }
-
-  // currentWeather.textContent = '';
-  // currentIcon.textContent = '';
-  // temp.textContent = '';
-  // wind.textContent = '';
-  // humidity.textContent = '';
 
 function getWeatherNow(apiCity) {
   fetch(apiCity)
