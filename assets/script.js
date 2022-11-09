@@ -19,7 +19,7 @@ citySearchButton.on("click", function (event) {
   locationWeather(citySearches);
 
   var location = {
-    location: citySearches
+    location: citySearches,
   }
 // stringify with JSON - set in local storage
   var saveLocation = JSON.parse(localStorage.getItem(saveLocation)) || [];
@@ -29,9 +29,9 @@ citySearchButton.on("click", function (event) {
   renderLocalStorage();
 })
 
-var apiCity = function (apiSearch) {
+var locationWeather = function (apiSearch) {
   // fetch weather
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${apiSearch}&appid=${apikey}`)
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${apiSearch}&appid=${apiKey}`)
   .then(function (response) {
     if (response.ok) {
       response.json()
@@ -41,7 +41,7 @@ var apiCity = function (apiSearch) {
     }
   })
   // 5 day
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${apiSearch}&appid=${apikey}`)
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${apiSearch}&appid=${apiKey}`)
   .then(function (response) {
     if (response.ok) {
       response.json()
@@ -54,8 +54,45 @@ var apiCity = function (apiSearch) {
 
 // display current weather
 var displayWeather = function (locationSearchData) {
- 
+ weatherContainer.html("");
 
+  var location = locationWeatherData.name;
+  var locationTemp = (1.8 * (locationWeatherData.main.temp -273) +32).toFixed(2);
+  var wind = (locationWeatherData.wind.speed).toFixed(2);
+  var humidity = (locationWeatherData)
+  var icon = locationSearchData.weather[0].icon;
+
+  var date = moment().format("M/DD/YYYY");
+
+  // create container
+  var locationEl = $('<h2 style="color:green">');
+  var locationTempEl = $('<h4 style="color:green">');
+  var windEl = $('<h4 style="color:green">');
+  var humidity = $('<h4 style="color:green">');
+  var iconEl = $('<img>');
+  var urlIcon = `http://openweathermap.org/img/w/${iconCode}.png`;
+
+  iconElImg.attr({
+    id: "icon",
+    src: urlIcon,
+    alt: "icon"
+  })
+
+    // location and date
+  locationEl.text(`${location} (${date})`);
+
+  // icon
+  locationEl.append(iconElImg);
+  weatherContainer.append(locationEl);
+// temperature
+  locationTempEl.text(`Temp: ${locationTemp}°F`);
+  weatherContainer.append(locationTempEl);
+// wind
+  windEl.text(`Wind: ${wind} MPH`);
+  weatherContainer.append(windEl);
+  // humidity
+  humidityEl.text(`Humidity: ${humidity}%`);
+  weatherContainer.append(windEl);
 
 }
 
