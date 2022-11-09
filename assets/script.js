@@ -56,10 +56,10 @@ var locationWeather = function (apiSearch) {
 var displayWeather = function (locationSearchData) {
  weatherContainer.html("");
 
-  var location = locationWeatherData.name;
-  var locationTemp = (1.8 * (locationWeatherData.main.temp -273) +32).toFixed(2);
-  var wind = (locationWeatherData.wind.speed).toFixed(2);
-  var humidity = (locationWeatherData)
+  var location = locationSearchData.name;
+  var locationTemp = (1.8 * (locationSearchData.main.temp -273) +32).toFixed(2);
+  var wind = (locationSearchData.wind.speed).toFixed(2);
+  var humidity = (locationSearchData)
   var icon = locationSearchData.weather[0].icon;
 
   var date = moment().format("M/DD/YYYY");
@@ -96,6 +96,63 @@ var displayWeather = function (locationSearchData) {
 
 }
 
+var displayWeather = function (locationSearchData) {
+fiveDayContainer.html("");
+
+var fiveDayTextDiv = $('<div>')
+fiveDayTextDiv.addClass(`ml-3`);
+
+var fiveDayTextEl =$('<h3>')
+fiveDayTextEl.text(`Five Day Forecast`);
+fiveDayTextDiv.append(fiveDayTextEl)
+fiveDayContainer.append(fiveDayTextDiv);
+
+for (var i = 0; i <= locationSearchData.list.length; i++) {
+  if (i === 4 || i === 12 || i === 20 || i ===28 || i ===36) {
+
+    var fiveDayDivEl = $('<div>');
+    fiveDayDivEl.addClass(`columns`)
+
+    var dailyForecastEl = $('<div style="border: 3px solid bg-success">');
+    dailyForecastEl.addClass("card m-2 p-1 bg-success text-white")
+    var dateEl = $('<h3>');
+    var tempEl = $('<h5>');
+    var humidityEl = $('</h5>');
+    var iconEl = $('<img>');
+
+    dateEl.text(moment(locationSearchData.list[i].dt_txt).format("M/DD/YYYY"));
+    fiveDayDivEl.append(dateEl);
+
+    var icon = locationSearchData.list[i].weather[0].icon;
+    var urlIcon = `http://openweathermap.org/img/w/${icon}.png`;
+
+    iconElImg.attr({
+      id: "icon",
+      src: urlIcon,
+      alt: "icon"
+    })
+fiveDayDivEl.append(iconElImg);
+
+var locationTemp = (1.8 * (locationSearchData.main.temp -273) +32).toFixed(2);
+locationTempEl.text(`Temp: ${locationTemp}°F`);
+fiveDayDivEl.append(locationTempEl);
+
+var wind = (locationSearchData.wind.speed).toFixed(2);
+windEl.text(`Temp: ${wind} MPH`);
+fiveDayDivEl.append(windEl);
+
+
+var humidity = (locationSearchData)
+humidityEl.text(`Humidity: ${humidity}%`);
+fiveDayDivEl.append(humidityEl);
+
+dailyForecastEl.append(fiveDayDivEl);
+fiveDayContainer.append(dailyForecastEl);
+
+  }
+}
+
+}
 
 // function getWeather() {
 //   // storeWeather();
