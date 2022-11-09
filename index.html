@@ -5,11 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-  <link rel="stylesheet" href="./assets/style.css">
   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js" ></script>
+  <link rel="stylesheet" href="./assets/style.css">
   <title>Weather Dashboard</title>
 </head>
 <body>
@@ -17,28 +17,36 @@
   <h1>Weather Dashboard</h1>
 </header>
 
-<div class="d-flex">
-  <div class="col-3">
+<main>
+<div class="d-flex flex-row justify-content-around">
+  <div class="col-4">
     <h4>Enter a City</h4>
     <form id="form" class="mb-2">
     <input id="city-search" class="form-input w-100" type="text" placeholder="city search field">
     <button class="btn btn-info btn-block" id="search" style="margin: 15px">Search</button>
     <hr>
     </form>
+    <hr>
+    <ul class="list-group" id="saveLocation">
+    </ul>
   </div>
-  <div>
-  <ul class="list-group" id="saveLocation">
-  </ul>
+
+<div>
+  <div class="col-8" id="currentForecast">
+  </div>
 </div>
 </div>
 
-<div>
-  <div class="col-12" id="currentForecast">
+<div class="row">
+  <div class="col">
+    <h3 class="text-center">Five Day Forecast</h3>
   </div>
+
 </div>
 <div class="row d-flex flex-row" id="fiveDayForecast">
 
 </div>
+</main>
  
 <script src="./assets/script.js"></script>
 </body>
@@ -93,112 +101,3 @@
 
 
 
-
-// <!-- <!DOCTYPE html>
-// <html lang="en">
-//   <head>
-//     <meta charset="UTF-8" />
-//     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-//     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-//     <link
-//       rel="stylesheet"
-//       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-//       integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
-//       crossorigin="anonymous"
-//     /> -->
-    
-//     <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
-//     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
-//     <!-- <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap" rel="stylesheet" /> -->
-//     <!-- <link rel="stylesheet" href="./assets/style.css" /> -->
-
-//     <!-- <title>Weather Dashboard</title>
-//   </head> -->
-
-//   <!-- <header>
-//     <h1 class="fw-bolder">Weather Dashboard</h1>
-// </header> -->
-// <!-- city search area -->
-// <!-- <body>
-//   <h1>Weather Dashboard</h1>
-// <div class="container-fluid">
-//   <div class="row"> 
-//     <div class="col-3"> -->
-//     <!-- <div class="col-3" id="search-field"> -->
-//       <!-- <h2 class="row mx-1"> City Weather Search</h2>
-//       <form id="form-search">
-//       </h2>City Weather Search:</h2>
-//       <!-- <input class="row mx-1 form control for-control-lg" id="search-city" type="text" cols="30"
-//         placeholder="city search"></input>
-//         <button class="row mx-1 btn btn-primary" id="search">SEARCH</button></form>
-//         <hr class="my-12 mx-1" />
-//         <h3>Recently Searched</h3>
-//         <div class="mx-1" id="Recently-Searched">
-//         </div>
-//         </div> --> -->
-
-// <!-- weather display area -->
-// <!-- <div class="col-9">
-
-
-// <h3 class="row"> 5-Day Forecast</h3>
-//
-
-
-//   <div class="col card">
-//     <p id="Day2">Day 2</p>
-//     <i><img id="current-icon2" src="" alt="Weather Icon"></i>
-//     <p id="temp"></p>
-//     <p id="wind"></p>
-//     <p id="humidity"></p>
-//   </div>
-  
-
-
-//   <div class="col card">
-//     <p id="Day3">Day 3</p>
-//     <i><img id="current-icon2" src="" alt="Weather Icon"></i>
-//     <p id="temp"></p>
-//     <p id="wind"></p>
-//     <p id="humidity"></p>
-//   </div>
-
-//   -->
-
-//   <!-- <div class="col card">
-//     <p id="Day4">Day 4</p>
-//     <i><img id="current-icon4" src="" alt="Weather Icon"></i>
-//     <p id="temp"></p>
-//     <p id="wind"></p>
-//     <p id="humidity"></p>
-
-//   </div>
-
-//   <div class="col card">
-//     <p id="Day5">Day 5</p>
-//     <i><img id="current-icon5" src="" alt="Weather Icon"></i>
-//     <p id="temp"></p>
-//     <p id="wind"></p>
-//     <p id="humidity"></p>
-//   </div> -->
- 
-                 
-//             <!-- </div>
-//       </div>
-//   </div>
-
-// /
-// <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-//     <!-- <script -->
-//       <!-- src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-//       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-//       crossorigin="anonymous" -->
-//     <!-- ></script> --> -->
-//     <!-- <script
-//       src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-//       integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-//       crossorigin="anonymous"
-//     ></script> -->
-//    <!-- <script src="./assets/script.js"></script>
-//   </body>
-// </html> -->

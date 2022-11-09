@@ -1,5 +1,8 @@
-body {
+* {
     font-family: 'Raleway', sans-serif;
+    margin: 3px;
+    padding: 3px;
+
 }
 
 header {
@@ -8,4 +11,14 @@ header {
   justify-content: center;
   text-align: center;
   color: white;
+}
+
+h3 {
+  background-color: rgb(25, 102, 122);
+  color: white;
+}
+#currentForecast {
+  margin: 10px;
+  padding: 10px;
+  border:rgb(25, 102, 122)
 }
