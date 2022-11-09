@@ -1,14 +1,10 @@
 var apiKey = 'ab8d7152432db2327ddc6c74cb809530';
 let textBoxCity = $("#city-search")
 let citySearchForm = $('#form')
-// let cityLocation = $('.location');
-// let temp = $('#temp');
-// let humidity = $('#humidity');
-// let wind = $('#wind');
-let currentWeather = $('#currentForecast');
-// let currentIcon = $('#current-icon0');
-// let searchedCities = JSON.parse(localStorage.getItem('city'));
+let currentForecast = $('#currentForecast');
 var citySearchButton = $('#search');
+var fiveDayForecast = $('#fiveDayForecast');
+var saveLocation = $('#saveLocation');
 
 // let citySearch = [];
 
@@ -53,14 +49,14 @@ var locationWeather = function (apiSearch) {
 }
 
 // display current weather
-var displayWeather = function (locationSearchData) {
- weatherContainer.html("");
+var displayWeather = function (apiSearch) {
+ currentForecast.html("");
 
-  var location = locationSearchData.name;
-  var locationTemp = (1.8 * (locationSearchData.main.temp -273) +32).toFixed(2);
-  var wind = (locationSearchData.wind.speed).toFixed(2);
-  var humidity = (locationSearchData)
-  var icon = locationSearchData.weather[0].icon;
+  var location = apiSearchData.name;
+  var locationTemp = (1.8 * (apiSearchData.main.temp -273) +32).toFixed(2);
+  var wind = (apiSearchData.wind.speed).toFixed(2);
+  var humidity = (apiSearchData)
+  var icon = apiSearchData.weather[0].icon;
 
   var date = moment().format("M/DD/YYYY");
 
@@ -83,21 +79,21 @@ var displayWeather = function (locationSearchData) {
 
   // icon
   locationEl.append(iconElImg);
-  weatherContainer.append(locationEl);
+  currentForecast.append(locationEl);
 // temperature
   locationTempEl.text(`Temp: ${locationTemp}°F`);
-  weatherContainer.append(locationTempEl);
+  currentForecast.append(locationTempEl);
 // wind
   windEl.text(`Wind: ${wind} MPH`);
-  weatherContainer.append(windEl);
+  currentForecast.append(windEl);
   // humidity
   humidityEl.text(`Humidity: ${humidity}%`);
-  weatherContainer.append(windEl);
+  currentForecast.append(windEl);
 
 }
 
-var displayWeather = function (locationSearchData) {
-fiveDayContainer.html("");
+var displayWeather = function (apiSearchData) {
+fiveDayForecast.html("");
 
 var fiveDayTextDiv = $('<div>')
 fiveDayTextDiv.addClass(`ml-3`);
@@ -105,9 +101,9 @@ fiveDayTextDiv.addClass(`ml-3`);
 var fiveDayTextEl =$('<h3>')
 fiveDayTextEl.text(`Five Day Forecast`);
 fiveDayTextDiv.append(fiveDayTextEl)
-fiveDayContainer.append(fiveDayTextDiv);
+fiveDayForecast.append(fiveDayTextDiv);
 
-for (var i = 0; i <= locationSearchData.list.length; i++) {
+for (var i = 0; i <= apiSearchData.list.length; i++) {
   if (i === 4 || i === 12 || i === 20 || i ===28 || i ===36) {
 
     var fiveDayDivEl = $('<div>');
@@ -116,14 +112,14 @@ for (var i = 0; i <= locationSearchData.list.length; i++) {
     var dailyForecastEl = $('<div style="border: 3px solid bg-success">');
     dailyForecastEl.addClass("card m-2 p-1 bg-success text-white")
     var dateEl = $('<h3>');
-    var tempEl = $('<h5>');
+    var locationTempEl = $('<h5>');
     var humidityEl = $('</h5>');
     var iconEl = $('<img>');
 
-    dateEl.text(moment(locationSearchData.list[i].dt_txt).format("M/DD/YYYY"));
+    dateEl.text(moment(apiSearchData.list[i].dt_txt).format("M/DD/YYYY"));
     fiveDayDivEl.append(dateEl);
 
-    var icon = locationSearchData.list[i].weather[0].icon;
+    var icon = apiSearchData.list[i].weather[0].icon;
     var urlIcon = `http://openweathermap.org/img/w/${icon}.png`;
 
     iconElImg.attr({
@@ -133,16 +129,16 @@ for (var i = 0; i <= locationSearchData.list.length; i++) {
     })
 fiveDayDivEl.append(iconElImg);
 
-var locationTemp = (1.8 * (locationSearchData.main.temp -273) +32).toFixed(2);
+var locationTemp = (1.8 * (apiSearchData.main.temp -273) +32).toFixed(2);
 locationTempEl.text(`Temp: ${locationTemp}°F`);
 fiveDayDivEl.append(locationTempEl);
 
-var wind = (locationSearchData.wind.speed).toFixed(2);
+var wind = (apiSearchData.wind.speed).toFixed(2);
 windEl.text(`Temp: ${wind} MPH`);
 fiveDayDivEl.append(windEl);
 
 
-var humidity = (locationSearchData)
+var humidity = (apiSearchData)
 humidityEl.text(`Humidity: ${humidity}%`);
 fiveDayDivEl.append(humidityEl);
 
@@ -153,6 +149,30 @@ fiveDayContainer.append(dailyForecastEl);
 }
 
 }
+
+var renderLocalStorage = function () {
+  saveLocation.html("");
+
+var localStorageLocations = JSON.parse(localStorage.getItem("saveLocation")); 
+
+for (let i= 0; i < localStorageLocations.length; i++) {
+  var saveLocationEl = $('<li>');
+ saveLocationEl.text(localStorageLocations[i].city);
+ saveLocationEl.attr('data-location', localStorageLocations[i].location),
+ saveLocationEl.addClass('list-groupp-item h-25 my-3 list-group-item-action')
+ saveLocation.append(saveLocationEl); 
+  
+}
+}
+
+saveLocation.on('click', function(event) {
+  var location = event.target.getAttribute("data-location");
+
+  locationWeather(location);
+})
+
+renderLocalStorage();
+
 
 // function getWeather() {
 //   // storeWeather();
